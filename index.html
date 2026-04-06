@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Imperial Electric Service</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
+
+  :root {
+    --brand-color: #000000;
+    --primary-gradient-start: #222222;
+    --primary-gradient-end: #555555;
+  }
+
+  /* Reset & base */
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    color: var(--brand-color);
+    background: #f7f7f7;
+    line-height: 1.6;
+  }
+
+  /* Scroll animations */
+  .fade-slide {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  .fade-slide.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Utility */
+  .container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 2em 1em;
+  }
+
+  /* Hero */
+  header.hero {
+    background: linear-gradient(135deg, var(--primary-gradient-start), var(--primary-gradient-end));
+    color: #fff;
+    padding: 6rem 1rem 5rem;
+    text-align: center;
+  }
+  header.hero h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.05em;
+  }
+  header.hero p {
+    font-size: 1.25rem;
+    max-width: 500px;
+    margin: 0 auto 2.5rem;
+    font-weight: 600;
+    opacity: 0.85;
+  }
+  .btn-primary {
+    background-color: var(--brand-color);
+    color: #fff;
+    font-weight: 700;
+    font-size: 1.15rem;
+    padding: 0.9em 2.5em;
+    border: none;
+    border-radius: 40px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    letter-spacing: 0.05em;
+  }
+  .btn-primary:hover,
+  .btn-primary:focus {
+    background-color: #121212;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+    outline: none;
+  }
+
+  /* Sections backgrounds */
+  section.services {
+    background: #fff;
+    padding: 4rem 1rem;
+  }
+  section.services h2 {
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: var(--brand-color);
+    margin-bottom: 1.5rem;
+    text-align: center;
+  }
+  ul.service-list {
+    list-style: none;
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+    gap: 1.3rem 2rem;
+  }
+  ul.service-list li {
+    background: #f0f0f0;
+    border-radius: 12px;
+    padding: 1.15em 1.5em;
+    font-weight: 600;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    position: relative;
+  }
+  ul.service-list li::before {
+    content: "⚡";
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.35rem;
+    color: var(--brand-color);
+  }
+  ul.service-list li {
+    padding-left: 2.8rem;
+  }
+
+  /* Social Proof */
+  section.testimonials {
+    background: #e2e2e2;
+    padding: 5rem 1rem;
+    color: var(--brand-color);
+    text-align: center;
+  }
+  section.testimonials h2 {
+    font-size: 2.8rem;
+    font-weight: 700;
+    margin-bottom: 2.5rem;
+  }
+  .testimonial-cards {
+    display: grid;
+    max-width: 900px;
+    margin: 0 auto;
+    gap: 2.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  }
+  .testimonial {
+    background: white;
+    padding: 2rem;
+    border-radius: 16px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+    position: relative;
+    font-style: normal;
+  }
+  .testimonial::before {
+    content: "“";
+    font-size: 3.5rem;
+    color: var(--brand-color);
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    line-height: 1;
+    font-weight: 700;
+    opacity: 0.15;
+  }
+  .testimonial p {
+    font-size: 1.1rem;
+    margin: 1.3rem 0 1.8rem 0;
+    line-height: 1.5;
+    color: #222;
+  }
+  .testimonial footer {
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: var(--brand-color);
+    text-align: right;
+  }
+
+  /* CTA Section */
+  section.cta {
+    background: #fff;
+    padding: 5rem 1rem 6rem;
+    text-align: center;
+    border-top: 6px solid var(--brand-color);
+  }
+  section.cta h2 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--brand-color);
+  }
+  section.cta p {
+    font-size: 1.3rem;
+    max-width: 520px;
+    margin: 0 auto 2.8rem;
+    font-weight: 600;
+    color: #444;
+  }
+  section.cta button {
+    font-size: 1.25rem;
+    padding: 1.15em 3.2em;
+    border-radius: 45px;
+    border: none;
+    background: var(--brand-color);
+    color: #fff;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    letter-spacing: 0.05em;
+  }
+  section.cta button:hover,
+  section.cta button:focus {
+    background-color: #121212;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.4);
+    outline: none;
+  }
+
+  /* Responsive */
+  @media (max-width: 480px) {
+    header.hero h1 {
+      font-size: 2.5rem;
+    }
+    section.services h2,
+    section.testimonials h2,
+    section.cta h2 {
+      font-size: 2.2rem;
+    }
+    ul.service-list {
+      grid-template-columns: 1fr;
+    }
+    .testimonial-cards {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+</head>
+<body>
+  <header class="hero">
+    <div class="container fade-slide">
+      <h1>Electrical Solutions That Keep Your Projects Powered & On Schedule</h1>
+      <p>Quality, Reliable and Trustworthy services tailored to residential, commercial, and solar construction needs across the United States.</p>
+      <button class="btn-primary" onclick="location.href='#contact'">Get Your Free Consultation</button>
+    </div>
+  </header>
+
+  <section class="services" aria-labelledby="services-title">
+    <div class="container fade-slide">
+      <h2 id="services-title">Comprehensive Electrical Services</h2>
+      <ul class="service-list" aria-label="Main services offered by Imperial Electric Service">
+        <li>Residential Electrical Services</li>
+        <li>Commercial Electrical Services</li>
+        <li>Solar Construction Services</li>
+        <li>Design-Build Tenant Improvements</li>
+        <li>Service Work</li>
+        <li>Facility Maintenance</li>
+        <li>Retrofits</li>
+        <li>Site &amp; Utility Work</li>
+        <li>New Installations</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="testimonials" aria-labelledby="testimonials-title">
+    <div class="container fade-slide">
+      <h2 id="testimonials-title">Trusted by Our Partners & Clients</h2>
+      <div class="testimonial-cards">
+        <article class="testimonial" tabindex="0">
+          <p>“Imperial Electric Service handled our commercial project flawlessly. Their team was punctual, professional, and delivered above expectations on every phase.”</p>
+          <footer>- Laura M., Construction Project Manager, Chicago, IL</footer>
+        </article>
+        <article class="testimonial" tabindex="0">
+          <p>“For our solar installation, Imperial Electric provided expert design and reliable service. Their dedication to quality and safety gave us complete peace of mind.”</p>
+          <footer>- Jason K., Solar Development Lead, Sacramento, CA</footer>
+        </article>
+        <article class="testimonial" tabindex="0">
+          <p>“As a property manager, I trust Imperial for all our tenant improvements and maintenance needs. They’re always responsive and get the job done right the first time.”</p>
+          <footer>- Monique D., Facility Manager, Dallas, TX</footer>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="cta" aria-labelledby="cta-title">
+    <div class="container fade-slide">
+      <h2 id="cta-title">Ready to Power Your Next Project with Confidence?</h2>
+      <p>Contact Imperial Electric Service today for a customized quote and experience our commitment to quality, reliability, and trustworthiness firsthand.</p>
+      <button class="btn-primary" onclick="window.location='mailto:contact@imperialelectricservice.com'">Contact Us Now</button>
+    </div>
+  </section>
+
+<script>
+  // Scroll animation trigger
+  function scrollAnimation() {
+    const elements = document.querySelectorAll('.fade-slide');
+    const triggerBottom = window.innerHeight * 0.85;
+
+    elements.forEach(el => {
+      const boxTop = el.getBoundingClientRect().top;
+      if (boxTop < triggerBottom) {
+        el.classList.add('visible');
+      }
+    });
+  }
+
+  window.addEventListener('scroll', scrollAnimation);
+  window.addEventListener('load', scrollAnimation);
+</script>
+</body>
+</html>
